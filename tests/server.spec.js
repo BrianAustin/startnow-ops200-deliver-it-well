@@ -37,4 +37,15 @@ describe('server/app.js', function() {
       done();
     });
   });
+
+  it('page says is it time for lunch?', (done) => {
+    chai.request(server)
+      .get('/')
+      .end((err, res) => {
+        expect(err).not.exist;
+        expect(JSON.stringify(res.text)).to.contain('Is it time for lunch?');
+        done();
+      });
+    });
+  
 })
